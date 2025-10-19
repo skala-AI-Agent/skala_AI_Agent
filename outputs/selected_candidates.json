@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Securitize",
+    "website": "https://securitize.io",
+    "segment": "Digital securities / tokenization",
+    "region": "USA",
+    "funding_stage": "Series B",
+    "domain_fit": 0.8,
+    "credibility_score": 0.7,
+    "final_score": 0.76,
+    "reason": "Deloitte RWA Report + SPiCE VC"
+  },
+  {
+    "name": "Archax",
+    "website": "https://archax.com",
+    "segment": "Institutional digital securities exchange",
+    "region": "UK",
+    "funding_stage": "Series A",
+    "domain_fit": 1.0,
+    "credibility_score": 0.2,
+    "final_score": 0.68,
+    "reason": "WEF 2023 + SPiCE VC"
+  },
+  {
+    "name": "ADDX",
+    "website": "https://addx.co",
+    "segment": "Private market tokenization platform",
+    "region": "Singapore",
+    "funding_stage": "Pre-Series B",
+    "domain_fit": 0.9,
+    "credibility_score": 0.3,
+    "final_score": 0.66,
+    "reason": "BCG 2022 Report + Temasek"
+  }
+]

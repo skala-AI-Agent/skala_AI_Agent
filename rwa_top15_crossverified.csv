@@ -1,0 +1,16 @@
+name,website,segment,region,funding_stage,investors,partners,regulation,evidence
+Securitize,https://securitize.io,Digital securities / tokenization,USA,Series B,"Morgan Stanley, BlackRock","KKR, Hamilton Lane",SEC/FINRA registered broker-dealer,Deloitte RWA Report + SPiCE VC
+Tokeny Solutions,https://tokeny.com,Security token issuance SaaS,Luxembourg,Strategic,Euronext,Klaytn,MiCA-aligned,Deloitte 2024 + Euronext investment
+ADDX,https://addx.co,Private market tokenization platform,Singapore,Pre-Series B,"Temasek Heliconia, UOB, SET",Hamilton Lane,MAS CMS + RMO licensed,BCG 2022 Report + Temasek
+Securrency,https://securrency.com,Banking-grade tokenization infra,USA,Series B,"WisdomTree, State Street, US Bank",DTCC,ADGM license (pending),WEF 2023 + DTCC acquisition
+Figure (Provenance),https://provenance.io,Blockchain-based lending & securitization,USA,Series D,"10T, DST Global","Apollo Global, Jefferies",Loan licensing (USA),CoinGecko 2025 + 10T Portfolio
+Ondo Finance,https://ondo.finance,On-chain Treasuries & RWA structured funds,USA,Series A,"Pantera, Founders Fund","Fei Protocol, BlackRock fund (OUSG)",SEC Reg D exempt offering,Pantera Capital + CoinDesk
+Bitbond,https://bitbond.com,Tokenized bonds SaaS,Germany,Seed,VC seed + BaFin STO,von der Heydt Bank,BaFin approved STO,CoinDesk + InvestaX
+Swarm Markets,https://swarm.com,Licensed DeFi AMM for tokenized assets,Germany,Early,"Founder-led, $15M liquidity","Tesla, Apple stock tokenized",BaFin licensed,Cointelegraph + Galaxy Digital
+Polymesh,https://polymesh.network,Permissioned security token blockchain,Switzerland,Protocol (Post-launch),"Outlier Ventures, Coinbase",SMP NYSE,KYC/permissioned by design,Outlier 2021 + InvestaX
+Archax,https://archax.com,Institutional digital securities exchange,UK,Series A,"Abrdn, First Derivatives",Abrdn,FCA MTF + custody + brokerage,WEF 2023 + SPiCE VC
+InvestaX,https://investax.io,Token securities SaaS & brokerage,Singapore,Pre-Series A,"SPiCE VC, SGInnovate","UBS, State Street",MAS CMS + RMO licensed,BIS 2024 + SPiCE VC
+Centrifuge,https://centrifuge.io,Decentralized RWA + DeFi lending infra,USA/Germany,Series A,"Galaxy Digital, BlockTower","MakerDAO, Tinlake pools",SPV trust-based structure,CoinGecko + Galaxy Digital
+Anchorage Digital,https://anchorage.com,Institutional digital asset custody bank,USA,Series D,"KKR, GIC, a16z","Visa, DOJ",OCC-chartered digital bank,Deloitte + a16z
+HQLAx,https://hqla-x.com,DLT-based HQLA collateral swap infra,Luxembourg,Series C,"HSBC, JP Morgan, Deutsche Börse","Eurex, R3",Triparty legal infra (DE/LUX),BIS 2023 + HSBC investment
+Maple Finance,https://maple.finance,On-chain institutional credit / loan pools,Australia/USA,Series A,"Polychain, Alameda","Barclays, Elwood",Smart contract lending (compliance via partners),CoinGecko + Polychain Capital

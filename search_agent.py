@@ -1,3 +1,5 @@
+# search_agent.py
+
 """Search Agent for evaluating RWA startups.
 """
 
@@ -5,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 from typing import Dict, List
 
@@ -75,79 +78,54 @@ REPORT_KEYWORDS = {
 EXCLUSION_KEYWORDS = {"airdrop", "apy", "meme", "retail"}
 
 
+def ensure_output_folder() -> str:
+    output_dir = "outputs"
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    return os.path.join(output_dir, "selected_candidates.json")
+
+
 def _combine_text(row: pd.Series, columns: List[str]) -> str:
-    values = []
-    for col in columns:
-        if col in row and pd.notna(row[col]):
-            values.append(str(row[col]))
-    return " ".join(values).lower()
+    return " ".join(str(row[col]) for col in columns if col in row and pd.notna(row[col])).lower()
 
 
 def _aggregate_row_text(row: pd.Series) -> str:
-    return " ".join(
-        str(value).lower() for value in row.values if pd.notna(value)
-    )
+    return " ".join(str(value).lower() for value in row.values if pd.notna(value))
 
 
 def score_domain_fit(row: pd.Series) -> float:
-    """Calculate the domain fit score based on keyword heuristics."""
     text = _aggregate_row_text(row)
     segment_text = _combine_text(row, ["segment"])
-
     score = 0.0
-    for keyword, value in DOMAIN_SEGMENT_KEYWORDS.items():
-        if keyword in segment_text or keyword in text:
-            score += value
-            if score >= 1.0:
-                return 1.0
-
-    for keyword, value in REGULATORY_KEYWORDS.items():
-        if keyword in text:
-            score += value
-            if score >= 1.0:
-                return 1.0
-
-    for keyword, value in INSTITUTIONAL_TERMS.items():
-        if keyword in text:
-            score += value
-            if score >= 1.0:
-                return 1.0
-
-    for keyword, value in TECHNICAL_TERMS.items():
-        if keyword in text:
-            score += value
-            if score >= 1.0:
-                return 1.0
-
+    for group in [DOMAIN_SEGMENT_KEYWORDS, REGULATORY_KEYWORDS, INSTITUTIONAL_TERMS, TECHNICAL_TERMS]:
+        for keyword, value in group.items():
+            if keyword in text or keyword in segment_text:
+                score += value
+                if score >= 1.0:
+                    return 1.0
     return min(score, 1.0)
 
 
 def score_credibility(row: pd.Series) -> float:
-    """Calculate the credibility score based on investors, partners, and mentions."""
     text = _aggregate_row_text(row)
     score = 0.0
-
     for keyword, value in INVESTOR_KEYWORDS.items():
         if keyword in text:
             score += value
             break
-
     for keyword, value in PARTNER_KEYWORDS.items():
         if keyword in text:
             score += value
             break
-
     funding_stage = str(row.get("funding_stage", "")).lower()
     for stage, value in FUNDING_STAGE_SCORES.items():
         if stage in funding_stage:
             score += value
             break
-
     for keyword, value in REPORT_KEYWORDS.items():
         if keyword in text:
             score += value
             break
-
     return min(score, 1.0)
 
 
@@ -160,15 +138,7 @@ def evaluate_startup(row: pd.Series) -> Dict[str, object]:
     domain_fit = score_domain_fit(row)
     credibility = score_credibility(row)
     final_score = round(0.6 * domain_fit + 0.4 * credibility, 3)
-
-    reason_source = (
-        row.get("evidence")
-        or row.get("notes")
-        or row.get("description")
-        or ""
-    )
-    reason = str(reason_source)
-
+    reason = str(row.get("evidence", "") or row.get("notes", "") or row.get("description", ""))
     return {
         "name": row.get("name"),
         "website": row.get("website"),
@@ -189,33 +159,41 @@ def select_candidates(df: pd.DataFrame, top_n: int) -> List[Dict[str, object]]:
             continue
         evaluation = evaluate_startup(row)
         evaluations.append(evaluation)
-
     evaluations.sort(key=lambda item: item["final_score"], reverse=True)
     return evaluations[:top_n]
 
 
-def main(csv_path: Path, output_path: Path, top_n: int) -> None:
+def save_results(candidates: List[Dict[str, object]], output_path: str | Path) -> None:
+    Path(output_path).write_text(json.dumps(candidates, indent=2))
+
+
+def run_pipeline(csv_path: Path, output_path: str | Path, top_n: int) -> None:
     df = pd.read_csv(csv_path)
     selected = select_candidates(df, top_n=top_n)
-    output_path.write_text(json.dumps(selected, indent=2))
+    save_results(selected, output_path)
+
+
+def main() -> None:
+    input_csv = Path("rwa_top15_crossverified.csv")
+    output_json = ensure_output_folder()
+    top_n = 3
+    run_pipeline(input_csv, output_json, top_n)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate RWA startups and select top candidates.")
-    parser.add_argument("--csv", type=Path, default=Path("rwa_top15_crossverified.csv"), help="Path to the CSV file containing startup data.")
-    parser.add_argument(
-        "--output",
-        type=Path,
-        default=Path("selected_candidates.json"),
-        help="Path to save the selected candidates JSON.",
-    )
-    parser.add_argument(
-        "--top-n",
-        type=int,
-        default=3,
-        help="Number of top startups to select (2 or 3 recommended).",
-    )
-
+    parser.add_argument("--csv", type=Path, default=None, help="Path to the CSV file containing startup data.")
+    parser.add_argument("--output", type=Path, default=None, help="Path to save the selected candidates JSON.")
+    parser.add_argument("--top-n", type=int, default=3, help="Number of top startups to select (2 or 3 recommended).")
     args = parser.parse_args()
-    top_n = args.top_n
-    main(args.csv, args.output, top_n)
+
+    if args.csv is not None or args.output is not None or args.top_n != 3:
+        csv_path = args.csv if args.csv is not None else Path("rwa_top15_crossverified.csv")
+        if args.output is not None:
+            output_path = args.output
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+        else:
+            output_path = Path(ensure_output_folder())
+        run_pipeline(csv_path, output_path, args.top_n)
+    else:
+        main()
