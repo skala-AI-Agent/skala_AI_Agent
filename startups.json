@@ -1,0 +1,12 @@
+[
+  { "name": "Securitize", "sector": "Regulated security token platform (institutional focus)", "strength": "SEC registration/compliance and strong access to institutional investors" },
+  { "name": "Ondo Finance", "sector": "Tokenization of U.S. Treasuries and funds", "strength": "Backed by leading global VCs; market leadership in on-chain treasuries" },
+  { "name": "Centrifuge", "sector": "Tokenization of real-world financial assets (trade finance, receivables)", "strength": "Deep DeFi integrations connecting RWAs to on-chain liquidity" },
+  { "name": "RealT", "sector": "Tokenization of U.S. real estate assets", "strength": "Real-time distribution of rental income to token holders" },
+  { "name": "Mantra", "sector": "RWA infrastructure focused on Middle East and Asia real estate", "strength": "Large-scale joint ventures and regional specialization" },
+  { "name": "Maple Finance", "sector": "Institutional credit and private lending tokenization network", "strength": "Underwriting and credit pools purpose-built for institutions" },
+  { "name": "Plume Network", "sector": "Emerging tokenization chain (DeFi/EVM-based) specialized in infra/distribution", "strength": "Verticalized infrastructure for asset origination and distribution" },
+  { "name": "Chainlink", "sector": "Decentralized oracle network for real-world asset data", "strength": "Market leader in price/identity/proof-of-reserve connectivity" },
+  { "name": "Redbelly Network", "sector": "Professional tokenization network for private equity, carbon credits, real estate", "strength": "High-throughput private/consortium-grade ledger features" },
+  { "name": "EvaCodes", "sector": "TON ecosystem-based end-to-end tokenization developer platform", "strength": "Full-cycle tokenization services and bespoke enterprise consulting" }
+]
