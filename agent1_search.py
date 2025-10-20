@@ -10,7 +10,7 @@ from langchain_core.prompts import ChatPromptTemplate
 # 공유 자원 및 상태 import
 from graph_state import GraphState
 from config import llm_mini, simple_web_search  # web_search 대신
-from agent0 import PERSONA_WEIGHTS # Agent 0의 가중치 사용
+from RWA_Investment_Agent2.agent0_persona import PERSONA_WEIGHTS # Agent 0의 가중치 사용
 
 # --- Agent 1 Constants ---
 EVALUATION_CRITERIA = {

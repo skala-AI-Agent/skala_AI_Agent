@@ -678,7 +678,7 @@ def _format_detailed_evaluations(startups, decisions, state):
 
 def _format_persona_weights(persona):
     """페르소나별 가중치 표시"""
-    from agent0 import PERSONA_WEIGHTS
+    from RWA_Investment_Agent2.agent0_persona import PERSONA_WEIGHTS
     
     weights = PERSONA_WEIGHTS.get(persona, {})
     
