@@ -301,8 +301,20 @@ RWA_Investment_Agent/
 │
 ├── Final_Investment_Report.md        # 출력: 최종 투자 보고서
 └── README.md                         # 프로젝트 문서
+```
 
+### 실행 흐름
 
+```
+START → Agent 0 (성향) → Agent 1 (랭킹) 
+  ↓
+Agent 2 (기술) → Agent 3 (시장) → Agent 4 (경쟁) → Agent 5 (결정)
+  ↓
+조건 분기:
+  ├─ "투자 적절" → Agent 6 (성공 보고서) → END
+  └─ "보류/부정" → 다음 스타트업 선택 → Agent 2로 재진입 (최대 5회)
+      └─ 5회 초과 또는 리스트 소진 → Agent 6 (실패 보고서) → END
+```
 
 Contributor Role 
 백광운 Company Profiling Agent, Startup Selection Agent Design 
