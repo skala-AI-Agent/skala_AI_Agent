@@ -317,6 +317,8 @@ Agent 2 (기술) → Agent 3 (시장) → Agent 4 (경쟁) → Agent 5 (결정)
 ```
 
 Contributor Role 
+
+
 백광운 Company Profiling Agent, Startup Selection Agent Design 
 
 백선재 Investment Decision Agent and Report Generation Design 
