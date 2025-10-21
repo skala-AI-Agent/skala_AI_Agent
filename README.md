@@ -278,16 +278,28 @@ Agent 2는 내부 루프와 품질 게이트를 갖춘 **독립적인 LangGraph 
 
 ---
 
-## 📂 Directory Structure
-
-RWA_Investment_Agent2/         
-├── startups.json           (스타트업 데이터)
-├── agent.py                 (에이전트 파일들)
-├── config.py               (설정)
-├── graph_state.py          (상태 정의)
-├── control_flow.py         (제어 흐름)
-├── main.py                 (실행 파일)
-
+RWA_Investment_Agent2/
+│
+├── .env                          # API 키 (OpenAI, Tavily, LangSmith)
+├── startups.json                 # 입력: 10개 RWA 스타트업
+│
+├── agent0.py                     # Agent 0: 성향 평가
+├── agent1.py                     # Agent 1: 탐색 및 랭킹
+├── agent2.py                     # Agent 2: 기술 DD (서브그래프)
+├── agent3.py                     # Agent 3: 시장 RAG
+├── agent4.py                     # Agent 4: 경쟁사 분석
+├── agent5.py                     # Agent 5: 투자 결정
+├── agent6.py                     # Agent 6: 보고서 생성 (850+ 라인)
+│
+├── config.py                     # 공유 리소스 (LLM, 도구, 체크리스트)
+├── graph_state.py                # 전역 GraphState 정의
+├── control_flow.py               # 루프 로직 및 조건부 라우팅
+│
+├── main.py                       # 메인 실행 스크립트
+│
+├── Final_Investment_Report.md    # 출력: VC급 보고서
+│
+└── README.md                     # 이 파일
 ---
 
 
