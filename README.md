@@ -282,7 +282,7 @@ Agent 2는 내부 루프와 품질 게이트를 갖춘 **독립적인 LangGraph 
 ```
 RWA_Investment_Agent/
 │
-├── .env                              # API 키 설정 (OpenAI, LangSmith)
+├
 ├── startups.json                     # 입력: 10개 스타트업 리스트
 │
 ├── agent0_persona.py                 # Agent 0: 투자자 성향 평가 (공격형/보수형)
@@ -301,11 +301,6 @@ RWA_Investment_Agent/
 │
 ├── Final_Investment_Report.md        # 출력: 최종 투자 보고서
 └── README.md                         # 프로젝트 문서
-```
-
-<img width="625" height="554" alt="image" src="https://github.com/user-attachments/assets/1f41fa77-7da5-4a2f-ac0d-87710d08606f" />
-
----
 
 
 
