@@ -274,10 +274,13 @@ Agent 2는 내부 루프와 품질 게이트를 갖춘 **독립적인 LangGraph 
 ---
 
 ## Architecture
+
 <img width="433" height="1581" alt="image" src="https://github.com/user-attachments/assets/75d42131-8eed-4230-bd3b-0e1fcc0cdf9f" />
 
 ---
 프로젝트 구조
+
+
 <img width="625" height="554" alt="image" src="https://github.com/user-attachments/assets/1f41fa77-7da5-4a2f-ac0d-87710d08606f" />
 
 ---
