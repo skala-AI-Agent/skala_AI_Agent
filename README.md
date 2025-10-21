@@ -979,10 +979,30 @@ Agent 6: VC급 보고서 생성
 │   - Final_Investment_Report.md 파일 저장                                    │
 └─────────────────────────────────────────────────────────────────────────────┘
 
-
+mermaid = r"""
+graph TD
+    A[Start] --> B(Agent 0: Persona);
+    B --> C(Agent 1: Search & Rank);
+    C --> D(Agent 2: Tech Summary);
+    D --> E(Agent 3: Market RAG);
+    E --> F(Agent 4: Competitor);
+    F --> G(Agent 5: Decision);
+    G --> H{Should Loop or Stop?};
+    
+    H -- "투자 적절" --> Z(Agent 6: Generate Report);
+    H -- "5회 누적 실패" --> Z;
+    
+    H -- "보류/부정적 (< 5회)" --> I(Select Next Startup);
+    I --> J{More Startups Left?};
+    J -- "Yes" --> D;
+    J -- "No" --> Z;
+    
+    Z --> X[END];
+"""
 
 ## 🧩 Architecture
-<img width="246" height="590" alt="image" src="https://github.com/user-attachments/assets/858afde7-019e-463b-864b-b1804f9cf56b" />
+<img width="433" height="1581" alt="image" src="https://github.com/user-attachments/assets/75d42131-8eed-4230-bd3b-0e1fcc0cdf9f" />
+
 
 ---
 
