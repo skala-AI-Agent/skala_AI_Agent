@@ -278,8 +278,30 @@ Agent 2는 내부 루프와 품질 게이트를 갖춘 **독립적인 LangGraph 
 <img width="433" height="1581" alt="image" src="https://github.com/user-attachments/assets/75d42131-8eed-4230-bd3b-0e1fcc0cdf9f" />
 
 ---
-프로젝트 구조
-
+## 프로젝트 구조
+```
+RWA_Investment_Agent/
+│
+├── .env                              # API 키 설정 (OpenAI, LangSmith)
+├── startups.json                     # 입력: 10개 스타트업 리스트
+│
+├── agent0_persona.py                 # Agent 0: 투자자 성향 평가 (공격형/보수형)
+├── agent1_search.py                  # Agent 1: 웹 검색 + 4개 기준 평가 + 랭킹
+├── agent2_tech_summary.py            # Agent 2: 기술 실사 (10개 노드 서브그래프)
+├── agent3_marketeval.py              # Agent 3: 시장 분석 (RAG + 4개 PDF 문서)
+├── agent4_CompetitorAnalysis.py      # Agent 4: 경쟁사 SWOT 분석
+├── agent5_Decision.py                # Agent 5: 20-Point 체크리스트 투자 결정
+├── agent6_ReportGen.py               # Agent 6: VC급 보고서 생성 (15-20페이지)
+│
+├── config.py                         # 공유 설정 (LLM, DuckDuckGo 검색, 체크리스트)
+├── graph_state.py                    # 전역 상태 정의 (모든 에이전트 데이터)
+├── control_flow.py                   # 루프 제어 (최대 5회 재시도)
+│
+├── main.py                           # 메인 실행 스크립트
+│
+├── Final_Investment_Report.md        # 출력: 최종 투자 보고서
+└── README.md                         # 프로젝트 문서
+```
 
 <img width="625" height="554" alt="image" src="https://github.com/user-attachments/assets/1f41fa77-7da5-4a2f-ac0d-87710d08606f" />
 
